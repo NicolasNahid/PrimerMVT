@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import Familiar
 
 def index(request):
-    return HttpResponse('HOLA GRUPO NNN')
+
+    familia = Familiar.objects.all()
+
+    ctx = {'parientes':familia,}
+
+    return render(request, 'familia/index.html', ctx)
